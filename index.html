@@ -1,0 +1,45 @@
+<html>
+    <head>
+      <title>AirQ app</title>
+      <meta charset="utf-8">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    </head>
+    <body>
+      <div class="wrapper">
+        <header class="app__header">
+          <h1><i class="signal signal--working"></i>Tim is working</h1>
+        </header>
+        <section class="sensors__overview">
+          <div id="temprature-sensor" class="sensor">
+            <div class="sensor__value">
+              <span>20</span>
+            </div>
+            <h3>Temprature</h3>
+          </div>
+          <div id="no2-sensor" class="sensor">
+            <div class="sensor__value">
+              <span>1282</span>
+            </div>
+            <h3>NO2</h3>
+          </div>
+          <div id="pm10-sensor" class="sensor">
+            <div class="sensor__value">
+              <span>210</span>
+            </div>
+            <h3>PM10</h3>
+          </div>
+          <div id="pm25-sensor" class="sensor">
+            <div class="sensor__value">
+              <span>320</span>
+            </div>
+            <h3>PM2.5</h3>
+          </div>
+        </section>
+        <footer class="app__footer">
+          <p>Last updated 10 minutes ago</p>
+        </footer>
+      </div>
+        <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
+    </body>
+</html>
