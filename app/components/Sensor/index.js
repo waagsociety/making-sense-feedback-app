@@ -11,7 +11,7 @@ const Sensor = ({ name, value }) =>
 
 Sensor.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default Sensor;
