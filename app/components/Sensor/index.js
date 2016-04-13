@@ -1,12 +1,13 @@
-import './index.css';
 import React, { PropTypes } from 'react';
 
+import styles from './index.css';
+
 const Sensor = ({ name, value }) =>
-  <div className="Sensor">
-    <div className="Sensor__value">
+  <div className={styles.container}>
+    <div className={styles.value}>
       <span>{value}</span>
     </div>
-    <h3>{name}</h3>
+    <h3 className={styles.name}>{name}</h3>
   </div>;
 
 Sensor.propTypes = {
