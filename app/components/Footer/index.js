@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import styles from './footer.css';
 import moment from 'moment';
 
-const Footer = ({ lastUpdated }) => {
-  const timeago = moment(lastUpdated).from(moment());
+const Footer = ({ timestamp }) => {
+  const timeago = moment(timestamp).from(moment());
   return (
     <footer className={styles.container}>
       <p className={styles.footer}>Last updated {timeago}</p>
@@ -12,7 +12,7 @@ const Footer = ({ lastUpdated }) => {
 };
 
 Footer.propTypes = {
-  lastUpdated: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
 };
 
 export default Footer;

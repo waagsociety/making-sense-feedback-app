@@ -1,18 +1,24 @@
 import React, { PropTypes } from 'react';
 
+import Footer from '../Footer';
+import Header from '../Header';
+import Value from '../Value';
 import styles from './sensor.css';
 
-const Sensor = ({ name, value }) =>
-  <div className={styles.container}>
-    <div className={styles.value}>
-      <span>{value}</span>
+const Sensor = ({ sensor: { id, timestamp, temp, pm25, pm10, no2a } }) =>
+  <div>
+    <Header name={id} />
+    <div className={styles.values}>
+      <Value name="Temperature" value={temp} />
+      <Value name="PM25" value={pm25} />
+      <Value name="PM10" value={pm10} />
+      <Value name="no2a" value={no2a} />
     </div>
-    <h3 className={styles.name}>{name}</h3>
+    <Footer timestamp={timestamp} />
   </div>;
 
 Sensor.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  sensor: PropTypes.object.isRequired,
 };
 
 export default Sensor;
