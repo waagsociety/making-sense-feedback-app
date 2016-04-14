@@ -5,7 +5,7 @@ import '../assets/main.css';
 import Sensors from '../components/sensors';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import icons from '../lib/icons';
+import manifest from '../assets/manifest';
 
 function loadData(callback) {
   fetch('http://api.citysdk.waag.org/objects/test.airq.1184697')
@@ -18,6 +18,7 @@ function loadData(callback) {
 const Application = React.createClass({
   getInitialState() {
     return {
+      active: false,
       sensors: [],
       srv_ts: '',
     };
@@ -31,17 +32,15 @@ const Application = React.createClass({
         { name: 'no2a', value: data.no2a },
         // { name: 'no2b', value: data.no2b },
       ],
+      active: true,
       srv_ts: data.srv_ts,
     }));
   },
   render() {
     return (
       <div>
-        <Helmet
-          title="AirQ"
-          link={icons}
-        />
-        <Header active={true} />
+        <Helmet title="AirQ" link={manifest.icons} />
+        <Header active={this.state.active} />
         <Sensors sensors={this.state.sensors} />
         <Footer lastUpdated={this.state.srv_ts}/>
       </div>
