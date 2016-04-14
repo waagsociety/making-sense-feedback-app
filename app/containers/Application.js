@@ -1,9 +1,13 @@
 import React from 'react';
 
-import Sensor from '../components/Sensor';
+import '../assets/main.css';
+import Sensors from '../components/sensors';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+
 
 function loadData(callback) {
-  fetch('http://api.citysdk.waag.org/objects/test.airq.1')
+  fetch('http://api.citysdk.waag.org/objects/test.airq.1184697')
     .then((response) => response.json())
     .then((json) => {
       callback(json.features[0].properties.layers['test.airq'].data);
@@ -13,29 +17,28 @@ function loadData(callback) {
 const Application = React.createClass({
   getInitialState() {
     return {
-      temp: '',
-      pm10: '',
-      pm25: '',
-      no2a: '',
-      no2b: '',
+      sensors: [],
+      srv_ts: '',
     };
   },
   componentWillMount() {
     loadData((data) => this.setState({
-      temp: data.temp,
-      pm10: data.pm10,
-      pm25: data.pm25,
-      no2a: data.no2a,
-      no2b: data.no2b,
+      sensors: [
+        { name: 'temperature', value: data.temp },
+        { name: 'pm10', value: data.pm10 },
+        { name: 'pm25', value: data.pm25 },
+        { name: 'no2a', value: data.no2a },
+        // { name: 'no2b', value: data.no2b },
+      ],
+      srv_ts: data.srv_ts,
     }));
   },
   render() {
     return (
       <div>
-        <Sensor name="Temperature" value={this.state.temp} />
-        <Sensor name="PM10" value={this.state.pm10} />
-        <Sensor name="PM25" value={this.state.pm25} />
-        <Sensor name="NO2" value={this.state.no2a} />
+        <Header active={true} />
+        <Sensors sensors={this.state.sensors} />
+        <Footer lastUpdated={this.state.srv_ts}/>
       </div>
     );
   },
