@@ -3,14 +3,13 @@ import styles from './footer.css';
 import moment from 'moment';
 
 const Footer = ({ lastUpdated }) => {
-  console.log(lastUpdated);
   const timeago = moment(lastUpdated).from(moment());
-  return(
+  return (
     <footer className={styles.container}>
       <p className={styles.footer}>Last updated {timeago}</p>
     </footer>
   );
-}
+};
 
 Footer.propTypes = {
   lastUpdated: PropTypes.string.isRequired,

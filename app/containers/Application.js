@@ -16,6 +16,11 @@ function loadData(callback) {
 }
 
 const Application = React.createClass({
+  getDefaultProps() {
+    return {
+      sensorId: '1184697',
+    };
+  },
   getInitialState() {
     return {
       active: false,
@@ -40,9 +45,9 @@ const Application = React.createClass({
     return (
       <div>
         <Helmet title="AirQ" link={manifest.icons} />
-        <Header active={this.state.active} />
+        <Header active={this.state.active} name={this.props.sensorId} />
         <Sensors sensors={this.state.sensors} />
-        <Footer lastUpdated={this.state.srv_ts}/>
+        <Footer lastUpdated={this.state.srv_ts} />
       </div>
     );
   },
