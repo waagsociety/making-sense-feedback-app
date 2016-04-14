@@ -34,6 +34,10 @@ module.exports = {
         test: /\.css$/,
         loader: 'style-loader!css-loader?modules&localIdentName=[hash:base64:5]!postcss-loader',
       },
+      {
+        test: /\.png$/,
+        loader: 'file-loader',
+      },
     ],
   },
   postcss: function () {

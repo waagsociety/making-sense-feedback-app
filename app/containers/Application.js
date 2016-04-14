@@ -1,10 +1,11 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import '../assets/main.css';
 import Sensors from '../components/sensors';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-
+import icons from '../lib/icons';
 
 function loadData(callback) {
   fetch('http://api.citysdk.waag.org/objects/test.airq.1184697')
@@ -36,6 +37,10 @@ const Application = React.createClass({
   render() {
     return (
       <div>
+        <Helmet
+          title="AirQ"
+          link={icons}
+        />
         <Header active={true} />
         <Sensors sensors={this.state.sensors} />
         <Footer lastUpdated={this.state.srv_ts}/>
