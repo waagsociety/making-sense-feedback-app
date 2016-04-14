@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import styles from './index.css';
+import styles from './sensor.css';
 
 const Sensor = ({ name, value }) =>
   <div className={styles.container}>

@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -41,6 +40,9 @@ module.exports = {
     ],
   },
   postcss: function () {
-    return [autoprefixer];
+    return [
+      require('postcss-import')({ addDependencyTo: webpack }),
+      require('postcss-cssnext')(),
+    ];
   },
 };
