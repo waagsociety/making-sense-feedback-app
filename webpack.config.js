@@ -1,12 +1,38 @@
+var path = require('path')
+var webpack = require('webpack')
+
 module.exports = {
-    entry: "./entry.js",
-    output: {
-        path: __dirname,
-        filename: "bundle.js"
-    },
-    module: {
-        loaders: [
-          { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader' }
-        ]
-    }
+  devtool: 'cheap-module-eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './app/index',
+  ],
+  output: {
+    path: path.join(__dirname, 'app'),
+    filename: 'bundle.js',
+  },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+    }),
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        include: __dirname,
+        query: {
+          presets: ['react-hmre'],
+        },
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules',
+      },
+    ],
+  },
 };
