@@ -2,6 +2,11 @@ const FETCH_SUCCESS = 'AirQ/sensors/FETCH_SUCCESS';
 const FETCH_REQUEST = 'AirQ/sensors/FETCH_REQUEST';
 const FETCH_FAILURE = 'AirQ/sensors/FETCH_FAILURE';
 
+/**
+ * Sensors reducer which handles the state of all AirQ sensors in the application
+ *
+ * @return {Object} Key-value store of sensors
+ */
 export default function reducer(state = [], action = {}) {
   switch (action.type) {
     case FETCH_SUCCESS:
@@ -31,9 +36,8 @@ export default function reducer(state = [], action = {}) {
 }
 
 /**
- * Fetch all sensors from CitySDK API
- *
- * @return {Function} redux-thunk dispatch method
+ * Exposes `fetchSensors` action which starts fetching all AirQ
+ * sensors from the CitySDK API.
  */
 export function fetchSensors() {
   return dispatch => {
