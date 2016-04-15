@@ -16,7 +16,7 @@ const Sensor = ({ sensor: { id, readings, timestamp } }) =>
         </div>
       )}
     </div>
-    <Footer timestamp={timestamp} />
+    <Footer lastUpdated={timestamp} />
   </div>;
 
 Sensor.propTypes = {
