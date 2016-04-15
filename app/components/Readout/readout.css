@@ -2,13 +2,13 @@
 
 .value {
   margin: auto;
-  margin: 0 auto 2vw auto;
-  height: 30vw;
-  width: 30vw;
-  border: .8vw solid var(--dark-grey);
+  margin: 0 auto calc(2vw / var(--screen-scale)) auto;
+  height: calc(30vw / var(--screen-scale));
+  width: calc(30vw / var(--screen-scale));
+  border: calc(.8vw / var(--screen-scale)) solid var(--dark-grey);
   display: block;
   border-radius: 50%;
-  font-size: 6vw;
+  font-size: calc(6vw /  var(--screen-scale));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,10 +16,10 @@
 
 .container{
   text-align: center;
-  width: 40vw;
-  margin: 10vw 0;
+  width: calc(40vw / var(--screen-scale));
+  margin: calc(10vw / var(--screen-scale)) 0;
 }
 .container h3{
-  font-size: 5vw;
+  font-size: calc(5vw / var(--screen-scale));
   font-weight: 200;
 }

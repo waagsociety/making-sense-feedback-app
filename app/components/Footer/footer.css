@@ -1,8 +1,13 @@
-.footer {
+@import url("../../assets/colors.css");
+footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 6vw;
-  font-size: 4vw;
+  padding-top: calc(6vw / var(--screen-scale));
+  font-size: calc(4vw / var(--screen-scale));
   opacity: .8;
+}
+footer p{
+  text-align: center;
+  max-width: none;
 }

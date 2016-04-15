@@ -1,5 +1,6 @@
+@import url("../../assets/colors.css");
 .values {
-  width: 80vw;
+  width: calc(80vw / var(--screen-scale));
   margin: auto;
   display: flex;
   justify-content: space-between;
