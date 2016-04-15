@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchSensors } from '../redux/modules/sensors';
 
 import '../assets/main.css';
-import Sensor from '../components/sensor';
+import Sensor from '../components/Sensor';
 import manifest from '../assets/manifest';
 
 class Application extends Component {
