@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
-import styles from './value.css';
+import styles from './readout.css';
 
-const Value = ({ name, value }) =>
+const Readout = ({ name, value }) =>
   <div className={styles.container}>
     <div className={styles.value}>
       <span>{value}</span>
@@ -10,9 +10,9 @@ const Value = ({ name, value }) =>
     <h3 className={styles.name}>{name}</h3>
   </div>;
 
-Value.propTypes = {
+Readout.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
 };
 
-export default Value;
+export default Readout;

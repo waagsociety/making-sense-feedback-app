@@ -6,26 +6,35 @@ export default function reducer(state = [], action = {}) {
   switch (action.type) {
     case FETCH_SUCCESS:
       return action.payload.map((sensor) => {
-        const { id, temp, pm25, pm10, no2a, no2b, srv_ts } = sensor.properties.layers['test.airq'].data;
+        const { data } = sensor.properties.layers['test.airq'];
 
         return {
-          id,
-          temp,
-          pm25,
-          pm10,
-          no2a,
-          no2b,
-          timestamp: srv_ts,
+          id: data.id,
+          readings: [
+            { name: 'Temperature', value: data.temp },
+            { name: 'PM25', value: data.pm25 },
+            { name: 'PM10', value: data.pm10 },
+            { name: 'NO2', value: data.no2a },
+            // { name: 'NO2(b)', value: data.no2b },
+          ],
+          timestamp: data.srv_ts,
         };
       }).reduce((sensors, sensor) =>
         Object.assign({}, sensors, {
           [sensor.id]: sensor,
         })
       , {});
+    case FETCH_FAILURE:
+      return {};
     default: return state;
   }
 }
 
+/**
+ * Fetch all sensors from CitySDK API
+ *
+ * @return {Function} redux-thunk dispatch method
+ */
 export function fetchSensors() {
   return dispatch => {
     dispatch({ type: FETCH_REQUEST });

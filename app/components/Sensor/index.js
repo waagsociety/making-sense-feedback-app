@@ -2,17 +2,19 @@ import React, { PropTypes } from 'react';
 
 import Footer from '../Footer';
 import Header from '../Header';
-import Value from '../Value';
+import Readout from '../Readout';
+
 import styles from './sensor.css';
 
-const Sensor = ({ sensor: { id, timestamp, temp, pm25, pm10, no2a } }) =>
+const Sensor = ({ sensor: { id, readings, timestamp } }) =>
   <div>
     <Header name={id} />
     <div className={styles.values}>
-      <Value name="Temperature" value={temp} />
-      <Value name="PM25" value={pm25} />
-      <Value name="PM10" value={pm10} />
-      <Value name="no2a" value={no2a} />
+      {readings.map((reading) =>
+        <div key={reading.name}>
+          <Readout name={reading.name} value={reading.value} />
+        </div>
+      )}
     </div>
     <Footer timestamp={timestamp} />
   </div>;

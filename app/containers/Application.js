@@ -3,15 +3,16 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { fetchSensors } from '../redux/modules/sensors';
 
-import '../assets/main.css';
 import Sensor from '../components/Sensor';
 import manifest from '../assets/manifest';
 
+import '../assets/main.css';
+
 class Application extends Component {
   componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchSensors());
+    this.props.dispatch(fetchSensors());
   }
+
   render() {
     const { sensor } = this.props;
 
@@ -25,6 +26,7 @@ class Application extends Component {
 }
 
 function mapStateToProps(state) {
+  // TODO: Handle id fetching with React Router
   const id = '1184697';
   return {
     sensor: state.sensors && state.sensors[id],

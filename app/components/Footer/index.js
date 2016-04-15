@@ -1,18 +1,19 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styles from './footer.css';
 import moment from 'moment';
 
-const Footer = ({ timestamp }) => {
-  const timeago = moment(timestamp).from(moment());
-  return (
-    <footer className={styles.container}>
-      <p className={styles.footer}>Last updated {timeago}</p>
-    </footer>
-  );
-};
+const Footer = ({ lastUpdated }) =>
+  <footer className={styles.container}>
+    <p className={styles.footer}>Last updated {moment(lastUpdated).from(moment())}</p>
+  </footer>;
 
 Footer.propTypes = {
-  timestamp: PropTypes.string.isRequired,
+  lastUpdated: (props, propName, componentName) => {
+    if (!moment(props[propName]).isValid()) {
+      return new Error(`Invalid prop '${propName}' supplied to '${componentName}' Validation failed.`);
+    }
+    return null;
+  },
 };
 
 export default Footer;
