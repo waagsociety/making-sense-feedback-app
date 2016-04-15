@@ -1,56 +1,43 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { fetchSensors } from '../redux/modules/sensors';
 
-import '../assets/main.css';
-import Sensors from '../components/sensors';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Sensor from '../components/Sensor';
 import manifest from '../assets/manifest';
 
-function loadData(callback) {
-  fetch('http://api.citysdk.waag.org/objects/test.airq.1184697')
-    .then((response) => response.json())
-    .then((json) => {
-      callback(json.features[0].properties.layers['test.airq'].data);
-    });
-}
+import '../assets/main.css';
 
-const Application = React.createClass({
-  getDefaultProps() {
-    return {
-      sensorId: '1184697',
-    };
-  },
-  getInitialState() {
-    return {
-      active: false,
-      sensors: [],
-      srv_ts: '',
-    };
-  },
+class Application extends Component {
   componentWillMount() {
-    loadData((data) => this.setState({
-      sensors: [
-        { name: 'temperature', value: data.temp },
-        { name: 'pm10', value: data.pm10 },
-        { name: 'pm25', value: data.pm25 },
-        { name: 'no2a', value: data.no2a },
-        // { name: 'no2b', value: data.no2b },
-      ],
-      active: true,
-      srv_ts: data.srv_ts,
-    }));
-  },
+    this.props.dispatch(fetchSensors());
+  }
+
   render() {
+    const { sensor } = this.props;
+
     return (
       <div>
         <Helmet title="AirQ" link={manifest.icons} />
-        <Header active={this.state.active} name={this.props.sensorId} />
-        <Sensors sensors={this.state.sensors} />
-        <Footer lastUpdated={this.state.srv_ts} />
+        {sensor ? <Sensor sensor={sensor} /> : null}
       </div>
     );
-  },
-});
+  }
+}
 
-export default Application;
+function mapStateToProps(state) {
+  // TODO: Handle id fetching with React Router
+  const id = '1184697';
+  return {
+    sensor: state.sensors && state.sensors[id],
+  };
+}
+
+Application.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  sensor: PropTypes.object,
+};
+
+export default connect(
+  mapStateToProps
+)(Application);

@@ -1,25 +1,8 @@
-@import url("../../assets/colors.css");
-
-.value {
+.values {
+  width: 80vw;
   margin: auto;
-  margin: 0 auto 2vw auto;
-  height: 30vw;
-  width: 30vw;
-  border: .8vw solid var(--dark-grey);
-  display: block;
-  border-radius: 50%;
-  font-size: 6vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container{
-  text-align: center;
-  width: 40vw;
-  margin: 10vw 0;
-}
-.container h3{
-  font-size: 5vw;
-  font-weight: 200;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
