@@ -1,9 +1,0 @@
-@import url("../../assets/colors.css");
-.values {
-  width: calc(80vw / var(--screen-scale));
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}

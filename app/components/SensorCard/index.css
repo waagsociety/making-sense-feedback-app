@@ -1,4 +1,11 @@
 @import url("../../assets/colors.css");
+
+.header {
+  text-align: center;
+  padding: calc(15vw / var(--screen-scale)) 0 calc(5vw / var(--screen-scale));
+  font-size: calc(3vw / var(--screen-scale));
+}
+
 .values {
   width: calc(80vw / var(--screen-scale));
   margin: auto;
@@ -6,4 +13,18 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: calc(6vw / var(--screen-scale));
+  font-size: calc(4vw / var(--screen-scale));
+  opacity: 0.8;
+}
+
+.footer p {
+  text-align: center;
+  max-width: none;
 }

@@ -1,18 +1,12 @@
 @import url("../../assets/colors.css");
 
-.container{
-  text-align: center;
-  padding: calc(15vw / var(--screen-scale)) 0 calc(5vw / var(--screen-scale));
-  font-size: calc(3vw / var(--screen-scale));
-}
-
-.active{
+.container {
   background: #4bd748;
   display: inline-block;
   width: calc(5vw / var(--screen-scale));
   height: calc(5vw / var(--screen-scale));
   top: calc(1vw / var(--screen-scale));
   margin-right: calc(1vw / var(--screen-scale));
-  border: calc(.1vw / var(--screen-scale)) solid #f2f2f2;
+  border: calc(0.1vw / var(--screen-scale)) solid #f2f2f2;
   border-radius: 50%;
 }

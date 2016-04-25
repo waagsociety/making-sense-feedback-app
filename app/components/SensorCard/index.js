@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react';
 
-import Footer from '../Footer';
-import Header from '../Header';
 import Readout from '../Readout';
+import SensorStatus from '../SensorStatus';
+import TimeAgo from '../TimeAgo';
 
 import styles from './index.css';
 
 const SensorCard = ({ sensor: { id, readings, timestamp } }) =>
   <div>
-    <Header name={id} />
+    <header className={styles.header}>
+      <h1><SensorStatus status="online" />{id} is online</h1>
+    </header>
     <div className={styles.values}>
       {readings.map((reading) =>
         <div key={reading.name}>
@@ -16,7 +18,9 @@ const SensorCard = ({ sensor: { id, readings, timestamp } }) =>
         </div>
       )}
     </div>
-    <Footer lastUpdated={timestamp} />
+    <footer className={styles.footer}>
+      <p>Last updated <TimeAgo timestamp={timestamp} /></p>
+    </footer>
   </div>;
 
 SensorCard.propTypes = {

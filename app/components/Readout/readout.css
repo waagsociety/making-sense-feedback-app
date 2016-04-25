@@ -1,14 +1,12 @@
 @import url("../../assets/colors.css");
 
 .value {
-  margin: auto;
   margin: 0 auto calc(2vw / var(--screen-scale)) auto;
   height: calc(30vw / var(--screen-scale));
   width: calc(30vw / var(--screen-scale));
-  border: calc(.8vw / var(--screen-scale)) solid var(--dark-grey);
-  display: block;
+  border: calc(0.8vw / var(--screen-scale)) solid var(--dark-grey);
   border-radius: 50%;
-  font-size: calc(6vw /  var(--screen-scale));
+  font-size: calc(6vw / var(--screen-scale));
   display: flex;
   justify-content: center;
   align-items: center;

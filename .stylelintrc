@@ -1,0 +1,24 @@
+{
+  "rules": {
+    "block-closing-brace-newline-after": "always",
+    "block-no-empty": null,
+    "color-hex-case": "lower",
+    "color-no-invalid-hex": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-colon-space-after": "always",
+    "declaration-no-important": true,
+    "function-calc-no-unspaced-operator": true,
+    "function-name-case": "lower",
+    "function-url-quotes": "double",
+    "indentation": [2, {
+      "except": ["value"]
+    }],
+    "no-missing-eof-newline": true,
+    "number-leading-zero": "always",
+    "max-empty-lines": 2,
+    "shorthand-property-no-redundant-values": true,
+    "unit-whitelist": ["vw", "em", "rem", "%", "s"],
+    "value-no-vendor-prefix": true,
+    "value-list-comma-space-after": "always"
+  }
+}
