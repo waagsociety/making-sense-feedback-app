@@ -4,9 +4,9 @@ import Footer from '../Footer';
 import Header from '../Header';
 import Readout from '../Readout';
 
-import styles from './sensor.css';
+import styles from './index.css';
 
-const Sensor = ({ sensor: { id, readings, timestamp } }) =>
+const SensorCard = ({ sensor: { id, readings, timestamp } }) =>
   <div>
     <Header name={id} />
     <div className={styles.values}>
@@ -19,8 +19,8 @@ const Sensor = ({ sensor: { id, readings, timestamp } }) =>
     <Footer lastUpdated={timestamp} />
   </div>;
 
-Sensor.propTypes = {
+SensorCard.propTypes = {
   sensor: PropTypes.object.isRequired,
 };
 
-export default Sensor;
+export default SensorCard;

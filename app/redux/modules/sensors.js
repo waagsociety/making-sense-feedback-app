@@ -24,7 +24,9 @@ export default function reducer(state = [], action = {}) {
           ],
           timestamp: data.srv_ts,
         };
-      }).reduce((sensors, sensor) =>
+      })
+      .filter((sensor) => sensor.id > 100) // ids <= 100 are test ids
+      .reduce((sensors, sensor) =>
         Object.assign({}, sensors, {
           [sensor.id]: sensor,
         })

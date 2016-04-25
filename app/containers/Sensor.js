@@ -1,14 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { fetchSensors } from '../redux/modules/sensors';
 
-import Sensor from '../components/Sensor';
-import manifest from '../assets/manifest';
+import SensorCard from '../components/SensorCard';
 
 import '../assets/main.css';
 
-class Application extends Component {
+class Sensor extends Component {
   componentWillMount() {
     this.props.dispatch(fetchSensors());
   }
@@ -18,26 +16,23 @@ class Application extends Component {
 
     return (
       <div>
-        <Helmet title="AirQ" link={manifest.icons} />
-        {sensor ? <Sensor sensor={sensor} /> : null}
+        {sensor ? <SensorCard sensor={sensor} /> : null}
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  // TODO: Handle id fetching with React Router
-  const id = '1184697';
+function mapStateToProps(state, props) {
   return {
-    sensor: state.sensors && state.sensors[id],
+    sensor: state.sensors && state.sensors[props.params.id],
   };
 }
 
-Application.propTypes = {
+Sensor.propTypes = {
   dispatch: PropTypes.func.isRequired,
   sensor: PropTypes.object,
 };
 
 export default connect(
   mapStateToProps
-)(Application);
+)(Sensor);
