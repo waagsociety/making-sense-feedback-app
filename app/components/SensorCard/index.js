@@ -6,10 +6,10 @@ import TimeAgo from '../TimeAgo';
 
 import styles from './index.css';
 
-const SensorCard = ({ sensor: { id, readings, timestamp } }) =>
+const SensorCard = ({ sensor: { id, readings, status, timestamp } }) =>
   <div>
     <header className={styles.header}>
-      <h1><SensorStatus status="online" />{id} is online</h1>
+      <h1><SensorStatus status={status} />{id} is {status}</h1>
     </header>
     <div className={styles.values}>
       {readings.map((reading) =>

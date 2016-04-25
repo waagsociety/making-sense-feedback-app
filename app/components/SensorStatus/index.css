@@ -1,7 +1,6 @@
 @import url("../../assets/colors.css");
 
 .container {
-  background: #4bd748;
   display: inline-block;
   width: calc(5vw / var(--screen-scale));
   height: calc(5vw / var(--screen-scale));
@@ -9,4 +8,12 @@
   margin-right: calc(1vw / var(--screen-scale));
   border: calc(0.1vw / var(--screen-scale)) solid #f2f2f2;
   border-radius: 50%;
+}
+
+.online {
+  background: #4bd748;
+}
+
+.offline {
+  background: red;
 }

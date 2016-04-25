@@ -1,6 +1,11 @@
+import moment from 'moment';
+
 const FETCH_SUCCESS = 'AirQ/sensors/FETCH_SUCCESS';
 const FETCH_REQUEST = 'AirQ/sensors/FETCH_REQUEST';
 const FETCH_FAILURE = 'AirQ/sensors/FETCH_FAILURE';
+
+const TESTID_CUTOFF = 100; // Everything below this id is a test id
+const OFFLINE_THRESHOLD = 15; // Time in minutes
 
 /**
  * Sensors reducer which handles the state of all AirQ sensors in the application
@@ -10,27 +15,30 @@ const FETCH_FAILURE = 'AirQ/sensors/FETCH_FAILURE';
 export default function reducer(state = [], action = {}) {
   switch (action.type) {
     case FETCH_SUCCESS:
-      return action.payload.map((sensor) => {
-        const { data } = sensor.properties.layers['test.airq'];
+      return action.payload
+        .filter((sensor) => sensor.properties.layers['test.airq'].data.id > TESTID_CUTOFF)
+        .map((sensor) => {
+          const { data } = sensor.properties.layers['test.airq'];
+          const online = moment().diff(moment(data.srv_ts), 'minutes') < OFFLINE_THRESHOLD;
 
-        return {
-          id: data.id,
-          readings: [
-            { name: 'Temperature', value: data.temp },
-            { name: 'PM25', value: data.pm25 },
-            { name: 'PM10', value: data.pm10 },
-            { name: 'NO2', value: data.no2a },
-            // { name: 'NO2(b)', value: data.no2b },
-          ],
-          timestamp: data.srv_ts,
-        };
-      })
-      .filter((sensor) => sensor.id > 100) // ids <= 100 are test ids
-      .reduce((sensors, sensor) =>
-        Object.assign({}, sensors, {
-          [sensor.id]: sensor,
+          return {
+            id: data.id,
+            readings: [
+              { name: 'Temperature', value: data.temp },
+              { name: 'PM25', value: data.pm25 },
+              { name: 'PM10', value: data.pm10 },
+              { name: 'NO2', value: data.no2a },
+              // { name: 'NO2(b)', value: data.no2b },
+            ],
+            timestamp: data.srv_ts,
+            status: online ? 'online' : 'offline',
+          };
         })
-      , {});
+        .reduce((sensors, sensor) =>
+          Object.assign({}, sensors, {
+            [sensor.id]: sensor,
+          })
+        , {});
     case FETCH_FAILURE:
       return {};
     default: return state;
