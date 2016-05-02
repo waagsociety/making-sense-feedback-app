@@ -2,14 +2,13 @@
 
 .container {
   display: inline-block;
-  width: calc(5vw / var(--screen-scale));
-  height: calc(5vw / var(--screen-scale));
-  top: calc(1vw / var(--screen-scale));
-  margin-right: calc(1vw / var(--screen-scale));
-  border: calc(0.1vw / var(--screen-scale)) solid #f2f2f2;
+  width: 20px;
+  height: 20px;
+  top: 3px;
+  margin-right: 10px;
+  border: 1px solid #f2f2f2;
   border-radius: 50%;
 }
-
 .online {
   background: #4bd748;
 }

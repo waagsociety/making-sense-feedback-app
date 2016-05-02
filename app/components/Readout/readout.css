@@ -1,12 +1,12 @@
 @import url("../../assets/colors.css");
 
 .value {
-  margin: 0 auto calc(2vw / var(--screen-scale)) auto;
-  height: calc(30vw / var(--screen-scale));
-  width: calc(30vw / var(--screen-scale));
-  border: calc(0.8vw / var(--screen-scale)) solid var(--dark-grey);
+  margin: 0 auto 5px auto;
+  height: 150px;
+  width: 150px;
+  border: 2px solid var(--dark-grey);
   border-radius: 50%;
-  font-size: calc(6vw / var(--screen-scale));
+  font-size: 1.2em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,10 +14,9 @@
 
 .container{
   text-align: center;
-  width: calc(40vw / var(--screen-scale));
-  margin: calc(10vw / var(--screen-scale)) 0;
+  margin: 40px 0;
 }
 .container h3{
-  font-size: calc(5vw / var(--screen-scale));
+  font-size: 1em;
   font-weight: 200;
 }

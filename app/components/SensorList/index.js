@@ -7,7 +7,7 @@ import styles from './index.css';
 const SensorList = ({ sensors }) =>
   <div className={styles.container}>
     {sensors.map((sensor) =>
-      <div key={sensor.id}>
+      <div key={sensor.id} className={styles.listitem}>
         <SensorTile sensor={sensor} />
       </div>
     )}
