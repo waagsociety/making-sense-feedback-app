@@ -16,9 +16,9 @@ export default function reducer(state = [], action = {}) {
   switch (action.type) {
     case FETCH_SUCCESS:
       return action.payload
-        .filter((sensor) => sensor.properties.layers['test.airq'].data.id > TESTID_CUTOFF)
+        .filter((sensor) => sensor.properties.layers['airq'].data.id > TESTID_CUTOFF)
         .map((sensor) => {
-          const { data } = sensor.properties.layers['test.airq'];
+          const { data } = sensor.properties.layers['airq'];
           const online = moment().diff(moment(data.srv_ts), 'minutes') < OFFLINE_THRESHOLD;
 
           return {
@@ -52,7 +52,7 @@ export default function reducer(state = [], action = {}) {
 export function fetchSensors() {
   return dispatch => {
     dispatch({ type: FETCH_REQUEST });
-    return fetch('http://api.citysdk.waag.org/layers/test.airq/objects')
+    return fetch('http://api.citysdk.waag.org/layers/airq/objects')
       .then(response => response.json())
       .then(json => dispatch({
         type: FETCH_SUCCESS,
