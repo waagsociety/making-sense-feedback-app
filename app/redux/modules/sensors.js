@@ -52,7 +52,7 @@ export default function reducer(state = [], action = {}) {
 export function fetchSensors() {
   return dispatch => {
     dispatch({ type: FETCH_REQUEST });
-    return fetch('http://api.citysdk.waag.org/layers/airq/objects')
+    return fetch('http://api.citysdk.waag.org/layers/airq/objects?per_page=25')
       .then(response => response.json())
       .then(json => dispatch({
         type: FETCH_SUCCESS,
