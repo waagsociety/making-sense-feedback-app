@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 
 import Readout from '../Readout';
+import Readouts from '../Readouts';
 import SensorStatus from '../SensorStatus';
 import TimeAgo from '../TimeAgo';
-
 import styles from './index.css';
 
 const SensorCard = ({ sensor: { id, readings, status, timestamp, temperature, humidity } }) =>
@@ -11,13 +11,6 @@ const SensorCard = ({ sensor: { id, readings, status, timestamp, temperature, hu
     <header className={styles.header}>
       <h1><SensorStatus status={status} />{id} is {status}</h1>
     </header>
-    <div className={styles.values}>
-      {readings.map((reading) =>
-        <div key={reading.name}>
-          <Readout name={reading.name} value={reading.value} />
-        </div>
-      )}
-    </div>
     <footer className={styles.footer}>
       <p>Temperature: {temperature} &#8451;</p>
       <p>Last updated <TimeAgo timestamp={timestamp} /></p>
