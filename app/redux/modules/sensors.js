@@ -24,12 +24,14 @@ export default function reducer(state = [], action = {}) {
           return {
             id: data.id,
             readings: [
-              { name: 'Temperature', value: data.temp },
+              // { name: 'Temperature', value: data.temp },
               { name: 'PM25', value: data.pm25 },
               { name: 'PM10', value: data.pm10 },
               { name: 'NO2', value: data.no2a },
-              // { name: 'NO2(b)', value: data.no2b },
+              { name: 'NO2(b)', value: data.no2b },
             ],
+            temperature: data.temp,
+            humidity: data.humidity,
             timestamp: data.srv_ts,
             status: online ? 'online' : 'offline',
           };

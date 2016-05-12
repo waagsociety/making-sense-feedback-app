@@ -17,6 +17,7 @@
 }
 .footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   font-size: 1em;
@@ -25,4 +26,6 @@
 .footer p {
   text-align: center;
   max-width: none;
+  width: 100%;
+  margin-bottom: .1em;
 }

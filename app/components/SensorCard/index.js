@@ -6,7 +6,7 @@ import TimeAgo from '../TimeAgo';
 
 import styles from './index.css';
 
-const SensorCard = ({ sensor: { id, readings, status, timestamp } }) =>
+const SensorCard = ({ sensor: { id, readings, status, timestamp, temperature, humidity } }) =>
   <div>
     <header className={styles.header}>
       <h1><SensorStatus status={status} />{id} is {status}</h1>
@@ -19,6 +19,7 @@ const SensorCard = ({ sensor: { id, readings, status, timestamp } }) =>
       )}
     </div>
     <footer className={styles.footer}>
+      <p>Temperature: {temperature} &#8451;</p>
       <p>Last updated <TimeAgo timestamp={timestamp} /></p>
     </footer>
   </div>;
