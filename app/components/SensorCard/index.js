@@ -1,12 +1,10 @@
 import React, { PropTypes } from 'react';
 
-import Readout from '../Readout';
-import Readouts from '../Readouts';
 import SensorStatus from '../SensorStatus';
 import TimeAgo from '../TimeAgo';
 import styles from './index.css';
 
-const SensorCard = ({ sensor: { id, readings, status, timestamp, temperature, humidity } }) =>
+const SensorCard = ({ sensor: { id, status, timestamp, temperature } }) =>
   <div>
     <header className={styles.header}>
       <h1><SensorStatus status={status} />{id} is {status}</h1>
