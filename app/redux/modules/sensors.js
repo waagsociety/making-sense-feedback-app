@@ -16,9 +16,9 @@ export default function reducer(state = [], action = {}) {
   switch (action.type) {
     case FETCH_SUCCESS:
       return action.payload
-        .filter((sensor) => sensor.properties.layers['airq'].data.id > TESTID_CUTOFF)
+        .filter((sensor) => sensor.properties.layers.airq.data.id > TESTID_CUTOFF)
         .map((sensor) => {
-          const { data } = sensor.properties.layers['airq'];
+          const { data } = sensor.properties.layers.airq;
           const online = moment().diff(moment(data.srv_ts), 'minutes') < OFFLINE_THRESHOLD;
 
           return {
