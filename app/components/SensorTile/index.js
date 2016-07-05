@@ -5,9 +5,9 @@ import SensorStatus from '../SensorStatus';
 
 import styles from './index.css';
 
-const SensorTile = ({ sensor: { id, status } }) =>
+const SensorTile = ({ sensor: { id, sensorname, status } }) =>
   <div className={styles.container}>
-    <Link className={styles.link} to={`/sensor/${id}`}><SensorStatus status={status} /> {id}</Link>
+    <Link className={styles.link} to={`/sensor/${id}`}><SensorStatus status={status} /> {sensorname}</Link>
   </div>;
 
 SensorTile.propTypes = {

@@ -13,6 +13,18 @@
   font-size: 1em;
   opacity: 0.8;
 }
+
+.values {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
 .footer p {
   text-align: center;
   max-width: none;
