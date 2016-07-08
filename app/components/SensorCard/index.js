@@ -20,6 +20,9 @@ const SensorCard = ({ sensor: { id, sensorname, readings, status, timestamp, tem
     <footer className={styles.footer}>
       <p>Temperature: {temperature} &#8451;</p>
       <p>Last updated <TimeAgo timestamp={timestamp} /></p>
+      <p>Disclaimer: Let op! De waarden die u ziet zijn resultaten van experimentele en nieuwe technologie.<br/>
+      De absolute waarden zijn nog niet betrouwbaar genoeg om grote conclusies uit te trekken. Wel is het mogelijk om fluctuaties te zien.<br/>
+      Sommige sensors werken nog niet niet optimaal, vandaar dat er soms vreemde (negatieve) waarden verschijnen.</p>
     </footer>
   </div>;
 
